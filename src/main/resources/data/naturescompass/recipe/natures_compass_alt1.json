@@ -1,7 +1,6 @@
 {
-  "type": "crafting_shaped",
+  "type": "crafting_shapeless",
   "group": "tools",
-  "pattern": ["AAA", "ACA", "AAA"],
   "key": {
     "A": "minecraft:golden_apple",
     "C": "minecraft:compass"

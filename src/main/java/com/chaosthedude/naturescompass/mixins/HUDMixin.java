@@ -56,13 +56,13 @@ public class HUDMixin {
 					RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.biome"), client.textRenderer, 5, 5, 0xFFFFFF, 3);
 					RenderUtils.drawConfiguredStringOnHUD(context, BiomeUtils.getBiomeName(client.world, compass.getBiomeID(stack)), client.textRenderer, 5, 5, 0xAAAAAA, 4);
 	
-					if (compass.shouldDisplayCoordinates(stack)) {
-						RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.coordinates"), client.textRenderer, 5, 5, 0xFFFFFF, 6);
-						RenderUtils.drawConfiguredStringOnHUD(context, compass.getFoundBiomeX(stack) + ", " + compass.getFoundBiomeZ(stack), client.textRenderer, 5, 5, 0xAAAAAA, 7);
+					// if (compass.shouldDisplayCoordinates(stack)) {
+					// 	RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.coordinates"), client.textRenderer, 5, 5, 0xFFFFFF, 6);
+					// 	RenderUtils.drawConfiguredStringOnHUD(context, compass.getFoundBiomeX(stack) + ", " + compass.getFoundBiomeZ(stack), client.textRenderer, 5, 5, 0xAAAAAA, 7);
 	
-						RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.distance"), client.textRenderer, 5, 5, 0xFFFFFF, 9);
-						RenderUtils.drawConfiguredStringOnHUD(context, String.valueOf(BiomeUtils.getDistanceToBiome(player, compass.getFoundBiomeX(stack), compass.getFoundBiomeZ(stack))), client.textRenderer, 5, 5, 0xAAAAAA, 10);
-					}
+					// 	RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.distance"), client.textRenderer, 5, 5, 0xFFFFFF, 9);
+					// 	RenderUtils.drawConfiguredStringOnHUD(context, String.valueOf(BiomeUtils.getDistanceToBiome(player, compass.getFoundBiomeX(stack), compass.getFoundBiomeZ(stack))), client.textRenderer, 5, 5, 0xAAAAAA, 10);
+					// }
 				} else if (compass.getState(stack) == CompassState.NOT_FOUND) {
 					RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.status"), client.textRenderer, 5, 5, 0xFFFFFF, 0);
 					RenderUtils.drawConfiguredStringOnHUD(context, I18n.translate("string.naturescompass.notFound"), client.textRenderer, 5, 5, 0xAAAAAA, 1);
