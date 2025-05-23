@@ -1,9 +1,9 @@
 {
-  "type": "crafting_shapeless",
-  "group": "tools",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     "minecraft:compass",
-    "minecraft:apple"
+    "minecraft:apple",
+    "minecraft:golden_apple"
   ],
   "result": {
     "id": "naturescompass:naturescompass"
