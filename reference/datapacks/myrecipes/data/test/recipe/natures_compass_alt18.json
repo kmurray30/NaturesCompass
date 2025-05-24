@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:compass",
+    "minecraft:sweet_berries",
+    "minecraft:acacia_sapling",
+    "minecraft:cactus",
+    "minecraft:salmon",
+    "minecraft:snowball",
+    "minecraft:lily_pad",
+    "minecraft:birch_sapling",
+    "minecraft:cocoa_beans"
+  ],
+  "result": {
+    "id": "naturescompass:naturescompass"
+  }
+}
