@@ -9,7 +9,7 @@
     "minecraft:snowball",
     "minecraft:lily_pad",
     "minecraft:turtle_egg",
-    "minecraft:birch_sapling"
+    "minecraft:glow_berries"
   ],
   "result": {
     "id": "naturescompass:naturescompass"
