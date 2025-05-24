@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.chaosthedude.naturescompass.NaturesCompass;
 import com.chaosthedude.naturescompass.config.NaturesCompassConfig;
 import com.chaosthedude.naturescompass.gui.GuiWrapper;
+import com.chaosthedude.naturescompass.network.SearchPacket;
 import com.chaosthedude.naturescompass.network.SyncPacket;
 import com.chaosthedude.naturescompass.utils.BiomeUtils;
 import com.chaosthedude.naturescompass.utils.CompassState;
@@ -13,6 +14,7 @@ import com.chaosthedude.naturescompass.utils.ItemUtils;
 import com.chaosthedude.naturescompass.utils.PlayerUtils;
 import com.chaosthedude.naturescompass.workers.BiomeSearchWorker;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -21,6 +23,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -64,7 +67,21 @@ public class NaturesCompassItem extends Item {
 	}
 
 	public void searchForBiome(ServerWorld world, PlayerEntity player, Identifier biomeID, BlockPos pos, ItemStack stack) {
-		setSearching(stack, biomeID, player);
+		int levelRequired = 35;
+		int levelCost = 5;
+
+		// Player level check and cost
+		if (player.experienceLevel >= levelRequired) {
+			player.addExperienceLevels(-levelCost); // Subtract levels
+			String playerName = player.getName().getString();
+			player.sendMessage(Text.literal("§a" + playerName + " spent " + levelCost + " levels to activate Nature's Compass"), false);
+			setSearching(stack, biomeID, player);
+		}
+		else {
+			player.sendMessage(Text.literal("§cMust be level " + levelRequired + " to activate Nature's Compass"), false);
+			return;
+		}
+
 		Optional<Biome> optionalBiome = BiomeUtils.getBiomeForIdentifier(world, biomeID);
  		if (optionalBiome.isPresent()) {
  			if (worker != null) {

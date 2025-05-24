@@ -123,17 +123,7 @@ public class NaturesCompassScreen extends Screen {
 	}
 
 	public void searchForBiome(Biome biome) {
-		int levelRequired = 35;
-		int levelCost = 5;
-		if (player.experienceLevel >= levelRequired) {
-			String playerName = player.getName().getString();
-			player.sendMessage(Text.literal("§a" + playerName + " spent 5 levels to activate Nature's Compass"), false);
-			player.addExperienceLevels(-levelCost); // Subtract levels
-			ClientPlayNetworking.send(new SearchPacket(BiomeUtils.getIdentifierForBiome(world, biome), player.getBlockPos()));
-		}
-		else {
-			player.sendMessage(Text.literal("§cAction Failed: Must be level " + levelRequired + " to use Nature's Compass"), false);
-		}
+		ClientPlayNetworking.send(new SearchPacket(BiomeUtils.getIdentifierForBiome(world, biome), player.getBlockPos()));
 		client.setScreen(null);
 	}
 
